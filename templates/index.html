@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!-- Title of the HTML document -->
-      <title>Customer Satisfaction Prediction</title>
+      <title>Brain Stroke Prediction</title>
       <!-- Link to external CSS file -->
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
       <!-- Internal CSS styles -->
@@ -27,142 +27,95 @@
    <body>
     <div class="container">
         <span id="predictionResult" class='{{"hidden" if prediction else "visible"}}'>
-            <h1>Customer Satisfaction Prediction Form</h1>
+            <h1>Brain Stroke Prediction Form</h1>
         </span>
         <span id="predictionResult" class='{{"visible" if prediction else "hidden"}}'>
-            <h1>Customer Satisfaction Result is </h1>
+            <h1>Brain Stroke  Result is </h1>
             {% if prediction %}
                 {% if prediction == "Happy" %}
-                    <p style="color: black !important;">Happy 😊</p> <!-- Unicode for smiling face -->
+                    <p style="color: black !important;">The person is NOT likely to have Stroke 😊</p> <!-- Unicode for smiling face -->
                 {% elif prediction == "Sad" %}
-                    <p style="color: black !important;">Sad 😞</p> <!-- Unicode for sad face -->
+                    <p style="color: black !important;">The person is likely to have Stroke 😞</p> <!-- Unicode for sad face -->
                 {% endif %}
             {% endif %}
         </span>
-
         <form action="/predict" method="POST">
             <!-- Numerical features -->
-            <div class="input-container">
-                <label for="Age">Age:</label>
-                <input type="text" id="Age" name="Age" value="{{ form_data.Age }}" required><br><br>
-                
-            </div>
             
             <div class="input-container">
-                <label for="Flight_distance">Flight Distance:</label>
-                <input type="text" id="Flight_distance" name="Flight_distance" value="{{ form_data.Flight_distance }}" required><br><br>
-            </div>
-    
-            <div class="input-container">
-                <label for="Inflight_wifi_service">Inflight Wifi Service:</label>
-                <input type="text" id="Inflight_wifi_service" name="Inflight_wifi_service" value="{{ form_data.Inflight_wifi_service }}" required><br><br>
-            </div>
-    
-            <div class="input-container">
-                <label for="Departure_arrival_time_convenient">Departure/Arrival Time Convenient:</label>
-                <input type="text" id="Departure_arrival_time_convenient" name="Departure_arrival_time_convenient" value="{{ form_data.Departure_arrival_time_convenient }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Ease_of_online_booking">Ease of Online booking:</label>
-                <input type="text" id="Ease_of_online_booking" name="Ease_of_online_booking" value="{{ form_data.Ease_of_online_booking }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Gate_location">Gate location:</label>
-                <input type="text" id="Gate_location" name="Gate_location" value="{{ form_data.Gate_location }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Food_and_drink">Food and drink:</label>
-                <input type="text" id="Food_and_drink" name="Food_and_drink" value="{{ form_data.Food_and_drink }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Online_boarding">Online boarding:</label>
-                <input type="text" id="Online_boarding" name="Online_boarding" value="{{ form_data.Online_boarding }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Seat_comfort">Seat comfort:</label>
-                <input type="text" id="Seat_comfort" name="Seat_comfort" value="{{ form_data.Seat_comfort }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Inflight_entertainment">Inflight entertainment:</label>
-                <input type="text" id="Inflight_entertainment" name="Inflight_entertainment" value="{{ form_data.Inflight_entertainment }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="On_board_service">On board service:</label>
-                <input type="text" id="On_board_service" name="On_board_service" value="{{ form_data.On_board_service }}"><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Leg_room_service">Leg room service:</label>
-                <input type="text" id="Leg_room_service" name="Leg_room_service" value="{{ form_data.Leg_room_service }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Baggage_handling">Baggage handling:</label>
-                <input type="text" id="Baggage_handling" name="Baggage_handling" value="{{ form_data.Baggage_handling }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Checkin_service">Checkin service:</label>
-                <input type="text" id="Checkin_service" name="Checkin_service" value="{{ form_data.Checkin_service }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Inflight_service">Inflight service:</label>
-                <input type="text" id="Inflight_service" name="Inflight_service" value="{{ form_data.Inflight_service }}" required><br><br>
-            </div>
-
-            <div class="input-container">
-                <label for="Cleanliness">Cleanliness:</label>
-                <input type="text" id="Cleanliness" name="Cleanliness" value="{{ form_data.Cleanliness }}" required><br><br>
+                <label for="age">age:</label>
+                <input type="text" id="age" name="age" value="{{ form_data.age }}" required><br><br>
             </div>
             <div class="input-container">
-                <label for="Arrival_delay_in_minutes">Arrival Delay in Minutes:</label>
-                <input type="text" id="Arrival_delay_in_minutes" name="Arrival_delay_in_minutes" value="{{ form_data.Arrival_delay_in_minutes }}" required><br><br>
+                <label for="avg_glucose_level">avg_glucose_level:</label>
+                <input type="text" id="avg_glucose_level" name="avg_glucose_level" value="{{ form_data.avg_glucose_level }}" required><br><br>
             </div>
-            <br></br>
-    
-    
+            <div class="input-container">
+                <label for="bmi">BMI:</label>
+                <input type="text" id="bmi" name="bmi" value="{{ form_data.bmi }}" required><br><br>
+            </div>
+            <br></br>           
+                            
+              
             <!-- Categorical features -->
             <div class="input-container">
-                <label for="Gender">Gender:</label>
-                <select type="text" id="Gender" name="Gender">
-                    <option  value="0" {% if form_data.Gender == "Male" %} selected {% endif %}>Male</option>
-                    <option  value="1" {% if form_data.Gender == "Female" %} selected {% endif %}>Female</option>
+                <label for="gender">Gender:</label>
+                <select type="text" id="gender" name="gender">
+                    <option  value="0" {% if form_data.gender == "Male" %} selected {% endif %}>Male</option>
+                    <option  value="1" {% if form_data.gender == "Female" %} selected {% endif %}>Female</option>
                 </select><br><br>
             </div>
 
             <div class="input-container">
-                <label for="Customer_type">Customer Type:</label>
-                <select type="text" id="Customer_type" name="Customer_type">
-                    <option value="0" {% if form_data.Customer_Type == "Loyal Customer" %} selected {% endif %}>Loyal Customer</option>
-                    <option value="1" {% if form_data.Customer_Type == "Disloyal Customer" %} selected {% endif %}>Disloyal Customer</option>
+                <label for="ever_married">ever_married:</label>
+                <select type="text" id="ever_married" name="ever_married">
+                    <option value="0" {% if form_data.ever_married == "Yes" %} selected {% endif %}>Yes</option>
+                    <option value="1" {% if form_data.ever_married == "No" %} selected {% endif %}>No</option>
+                </select><br><br>
+            </div>
+            <div class="input-container">
+                <label for="heart_disease">heart_disease:</label>
+                <select type="text" id="heart_disease" name="heart_disease">
+                    <option value="0" {% if form_data.heart_disease == "Yes" %} selected {% endif %}>Yes</option>
+                    <option value="1" {% if form_data.heart_disease == "No" %} selected {% endif %}>No</option>
+                </select><br><br>
+            </div>
+            <div class="input-container">
+                <label for="hypertension">hypertension:</label>
+                <select type="text" id="hypertension" name="hypertension">
+                    <option value="0" {% if form_data.hypertension == "Yes" %} selected {% endif %}>Yes</option>
+                    <option value="1" {% if form_data.hypertension == "No" %} selected {% endif %}>No</option>
                 </select><br><br>
             </div>
             <br></br>
             <div class="input-container">
-                <label for="Type_of_travel">Type of Travel:</label>
-                <select type="text" id="Type_of_travel" name="Type_of_travel">
-                    <option value="0" {% if form_data.Type_of_Travel == "Personal Travel" %} selected {% endif %}>Personal Travel</option>
-                    <option value="1" {% if form_data.Type_of_Travel == "Business travel" %} selected {% endif %}>Business travel</option>
+                <label for="work_type">Type of Travel:</label>
+                <select type="text" id="work_type" name="work_type">
+                    <option value="0" {% if form_data.work_type == "Private" %} selected {% endif %}>Private</option>
+                    <option value="1" {% if form_data.work_type == "Self-employed" %} selected {% endif %}>Self-employed</option>
+                    <option value="2" {% if form_data.work_type == "Govt_job" %} selected {% endif %}>Govt_job</option>
+                    <option value="3" {% if form_data.work_type == "children" %} selected {% endif %}>children</option>
                 </select><br><br>
             </div>
 
             <div class="input-container">
-                <label for="Class">Class:</label>
-                <select type="text" id="Class" name="Class">
-                    <option value="0" {% if form_data.Class == "Eco" %} selected {% endif %}>Eco</option>
-                    <option value="1" {% if form_data.Class == "Eco Plus" %} selected {% endif %}>Eco Plus</option>
-                    <option value="2" {% if form_data.Class == "Business" %} selected {% endif %}>Business</option>
+                <label for="Residence_type">Residence_type:</label>
+                <select type="text" id="Residence_type" name="Residence_type">
+                    <option value="0" {% if form_data.Residence_type == "Urban" %} selected {% endif %}>Urban</option>
+                    <option value="1" {% if form_data.Residence_type == "Rural" %} selected {% endif %}>Rural</option>
                     
                 </select><br><br>
             </div>
+            <div class="input-container">
+                <label for="smoking_status">smoking_status:</label>
+                <select type="text" id="smoking_status" name="smoking_status">
+                    <option value="0" {% if form_data.smoking_status == "formerly smoked" %} selected {% endif %}>formerly smoked</option>
+                    <option value="1" {% if form_data.smoking_status == "never smoked" %} selected {% endif %}>never smoked</option>
+                    <option value="2" {% if form_data.smoking_status == "smokes" %} selected {% endif %}>smokes</option>
+                    <option value="3" {% if form_data.smoking_status == "Unknown" %} selected {% endif %}>Unknown</option>
+                </select><br><br>
+            </div>
+
     
             <input type="submit" value="Predict">
         </form>       

@@ -39,62 +39,41 @@ def predict_datapoint():
         return render_template('index.html', form_data={})  # Render the form template with empty form data
     else:
         # Create CustomData object with form data
+       
+        gender=float(request.form.get('gender'))
+        age=float(request.form.get('age'))
+        hypertension=float(request.form.get('hypertension'))
+        heart_disease=float(request.form.get('heart_disease'))
+        ever_married=float(request.form.get('ever_married'))
+        work_type=float(request.form.get('work_type'))
+        Residence_type=float(request.form.get('Residence_type'))
+        avg_glucose_level=float(request.form.get('avg_glucose_level'))
+        bmi=float(request.form.get('bmi'))
+        smoking_status=float(request.form.get('smoking_status'))
+    
         
-        Age=float(request.form.get('Age'))
-        Flight_Distance=float(request.form.get('Flight_distance'))
-        Inflight_wifi_service=float(request.form.get('Inflight_wifi_service'))
-        Departure_Arrival_time_convenient=float(request.form.get('Departure_arrival_time_convenient'))
-        Ease_of_Online_booking=float(request.form.get('Ease_of_online_booking'))
-        Gate_location=float(request.form.get('Gate_location'))
-        Food_and_drink=float(request.form.get('Food_and_drink'))
-        Online_boarding=float(request.form.get('Online_boarding'))
-        Seat_comfort=float(request.form.get('Seat_comfort'))
-        Inflight_entertainment=float(request.form.get('Inflight_entertainment'))
-        On_board_service=float(request.form.get('On_board_service'))
-        Leg_room_service=float(request.form.get('Leg_room_service'))
-        Baggage_handling=float(request.form.get('Baggage_handling'))
-        Checkin_service=float(request.form.get('Checkin_service'))
-        Inflight_service=float(request.form.get('Inflight_service'))
-        Cleanliness=float(request.form.get('Cleanliness'))
-        Arrival_Delay_in_Minutes=float(request.form.get('Arrival_delay_in_minutes'))
-        Gender=request.form.get('Gender')
-        Customer_Type=request.form.get('Customer_type')
-        Type_of_Travel=request.form.get('Type_of_travel')
-        Class=request.form.get('Class')
-        
-        data = (Gender,Customer_Type,Age,Type_of_Travel,Class,Flight_Distance,Inflight_wifi_service,Departure_Arrival_time_convenient,Ease_of_Online_booking,Gate_location,Food_and_drink,Online_boarding,Seat_comfort,
-                Inflight_entertainment,On_board_service,Leg_room_service,Baggage_handling,Checkin_service,Inflight_service,Cleanliness,Arrival_Delay_in_Minutes)
+        data = (gender,age,hypertension,heart_disease,ever_married,work_type,Residence_type,avg_glucose_level,
+                bmi,smoking_status)
 
         # Perform prediction
         prediction = make_predictions(scaler, data)
         print("prediction",prediction[0])
 
         # Translate prediction to human-readable format
-        prediction_text = "Happy" if prediction[0] == 1 else "Sad"
+        prediction_text = "Sad" if prediction[0] == 1 else "Happy"
         
         # Pass form data back to the template
         form_data = {
-            'Age': float(request.form.get('Age')),
-            'Flight_distance': float(request.form.get('Flight_distance')),
-            'Inflight_wifi_service': float(request.form.get('Inflight_wifi_service')),
-            'Departure_arrival_time_convenient': float(request.form.get('Departure_arrival_time_convenient')),
-            'Ease_of_online_booking': float(request.form.get('Ease_of_online_booking')),
-            'Gate_location': float(request.form.get('Gate_location')),
-            'Food_and_drink': float(request.form.get('Food_and_drink')),
-            'Online_boarding': float(request.form.get('Online_boarding')),
-            'Seat_comfort': float(request.form.get('Seat_comfort')),
-            'Inflight_entertainment': float(request.form.get('Inflight_entertainment')),
-            'On_board_service': float(request.form.get('On_board_service')),
-            'Leg_room_service': float(request.form.get('Leg_room_service')),
-            'Baggage_handling': float(request.form.get('Baggage_handling')),
-            'Checkin_service': float(request.form.get('Checkin_service')),
-            'Inflight_service': float(request.form.get('Inflight_service')),
-            'Cleanliness': float(request.form.get('Cleanliness')),
-            'Arrival_delay_in_minutes': float(request.form.get('Arrival_delay_in_minutes')),
-            'Gender': request.form.get('Gender'),
-            'Customer_type': request.form.get('Customer_type'),
-            'Type_of_travel': request.form.get('Type_of_travel'),
-            'Class': request.form.get('Class')
+            'gender': float(request.form.get('gender')),
+            'age': float(request.form.get('age')),
+            'hypertension': float(request.form.get('hypertension')),
+            'heart_disease': float(request.form.get('heart_disease')),
+            'ever_married': float(request.form.get('ever_married')),
+            'work_type': float(request.form.get('work_type')),
+            'Residence_type': float(request.form.get('Residence_type')),
+            'avg_glucose_level': float(request.form.get('avg_glucose_level')),
+            'bmi': float(request.form.get('bmi')),
+            'smoking_status': float(request.form.get('smoking_status'))
         }
 
         # Render the template with prediction result and form data
