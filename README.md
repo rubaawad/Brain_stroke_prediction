@@ -15,7 +15,7 @@
     In src/components/notebook/data you can find these files:
 
     # EDA Notebook
-        CUSTOMER SATISFACTION PERFORMANCE.ipynb: Exploratory Data Analysis notebook for analyzing the dataset.
+        EDA.ipynb: Exploratory Data Analysis notebook for analyzing the dataset.
     # Model Training Notebook
         MODEL TRAINING.ipynb: Notebook for training machine learning models.
 # Data

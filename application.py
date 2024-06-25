@@ -60,7 +60,7 @@ def predict_datapoint():
         print("prediction",prediction[0])
 
         # Translate prediction to human-readable format
-        prediction_text = "Sad" if prediction[0] == 1 else "Happy"
+        prediction_text = "Yes" if prediction[0] == 1 else "No"
         
         # Pass form data back to the template
         form_data = {

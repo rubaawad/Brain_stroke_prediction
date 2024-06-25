@@ -27,15 +27,15 @@
    <body>
     <div class="container">
         <span id="predictionResult" class='{{"hidden" if prediction else "visible"}}'>
-            <h1>Brain Stroke Prediction Form</h1>
+            <h1 style="color: white !important;">Brain Stroke Prediction Form</h1>
         </span>
         <span id="predictionResult" class='{{"visible" if prediction else "hidden"}}'>
-            <h1>Brain Stroke  Result is </h1>
+            <h1 style="color: white !important;">Brain Stroke  Result is </h1>
             {% if prediction %}
-                {% if prediction == "Happy" %}
-                    <p style="color: black !important;">The person is NOT likely to have Stroke 😊</p> <!-- Unicode for smiling face -->
-                {% elif prediction == "Sad" %}
-                    <p style="color: black !important;">The person is likely to have Stroke 😞</p> <!-- Unicode for sad face -->
+                {% if prediction == "No" %}
+                    <p style="color: white !important;">The person is NOT likely to have Stroke 😊</p> <!-- Unicode for smiling face -->
+                {% elif prediction == "Yes" %}
+                    <p style="color: white !important;">The person is likely to have Stroke 😞</p> <!-- Unicode for sad face -->
                 {% endif %}
             {% endif %}
         </span>
@@ -67,21 +67,21 @@
             </div>
 
             <div class="input-container">
-                <label for="ever_married">ever_married:</label>
+                <label for="ever_married">Married:</label>
                 <select type="text" id="ever_married" name="ever_married">
                     <option value="0" {% if form_data.ever_married == "Yes" %} selected {% endif %}>Yes</option>
                     <option value="1" {% if form_data.ever_married == "No" %} selected {% endif %}>No</option>
                 </select><br><br>
             </div>
             <div class="input-container">
-                <label for="heart_disease">heart_disease:</label>
+                <label for="heart_disease">Heart Disease:</label>
                 <select type="text" id="heart_disease" name="heart_disease">
                     <option value="0" {% if form_data.heart_disease == "Yes" %} selected {% endif %}>Yes</option>
                     <option value="1" {% if form_data.heart_disease == "No" %} selected {% endif %}>No</option>
                 </select><br><br>
             </div>
             <div class="input-container">
-                <label for="hypertension">hypertension:</label>
+                <label for="hypertension">Hypertension:</label>
                 <select type="text" id="hypertension" name="hypertension">
                     <option value="0" {% if form_data.hypertension == "Yes" %} selected {% endif %}>Yes</option>
                     <option value="1" {% if form_data.hypertension == "No" %} selected {% endif %}>No</option>
@@ -89,17 +89,17 @@
             </div>
             <br></br>
             <div class="input-container">
-                <label for="work_type">Type of Travel:</label>
+                <label for="work_type">Work Type:</label>
                 <select type="text" id="work_type" name="work_type">
                     <option value="0" {% if form_data.work_type == "Private" %} selected {% endif %}>Private</option>
                     <option value="1" {% if form_data.work_type == "Self-employed" %} selected {% endif %}>Self-employed</option>
                     <option value="2" {% if form_data.work_type == "Govt_job" %} selected {% endif %}>Govt_job</option>
-                    <option value="3" {% if form_data.work_type == "children" %} selected {% endif %}>children</option>
+                    <option value="3" {% if form_data.work_type == "Children" %} selected {% endif %}>children</option>
                 </select><br><br>
             </div>
 
             <div class="input-container">
-                <label for="Residence_type">Residence_type:</label>
+                <label for="Residence_type">Residence Type:</label>
                 <select type="text" id="Residence_type" name="Residence_type">
                     <option value="0" {% if form_data.Residence_type == "Urban" %} selected {% endif %}>Urban</option>
                     <option value="1" {% if form_data.Residence_type == "Rural" %} selected {% endif %}>Rural</option>
@@ -107,11 +107,11 @@
                 </select><br><br>
             </div>
             <div class="input-container">
-                <label for="smoking_status">smoking_status:</label>
+                <label for="smoking_status">Smoking Status:</label>
                 <select type="text" id="smoking_status" name="smoking_status">
-                    <option value="0" {% if form_data.smoking_status == "formerly smoked" %} selected {% endif %}>formerly smoked</option>
-                    <option value="1" {% if form_data.smoking_status == "never smoked" %} selected {% endif %}>never smoked</option>
-                    <option value="2" {% if form_data.smoking_status == "smokes" %} selected {% endif %}>smokes</option>
+                    <option value="0" {% if form_data.smoking_status == "Formerly Smoked" %} selected {% endif %}>formerly smoked</option>
+                    <option value="1" {% if form_data.smoking_status == "Never Smoked" %} selected {% endif %}>never smoked</option>
+                    <option value="2" {% if form_data.smoking_status == "Smokes" %} selected {% endif %}>smokes</option>
                     <option value="3" {% if form_data.smoking_status == "Unknown" %} selected {% endif %}>Unknown</option>
                 </select><br><br>
             </div>
