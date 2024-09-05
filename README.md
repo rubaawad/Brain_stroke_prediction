@@ -75,13 +75,13 @@ Use metrics to assess the performance of the models and select the best one.
 # Docker
     Usage Instructions:
         Pull the Docker Image:
-            docker pull rubamahgoob/Brain_stroke_prediction_app:latest
+            docker pull rubamahgoob/stroke_prediction_app:latest
 
     Run the Docker Container:
-        docker run -d -p 5000:5000 rubamahgoob/Brain_stroke_prediction_app:latest
+        docker run -d -p 5000:5000 rubamahgoob/stroke_prediction_app:latest
 
     Access the Application:
-        Once the container is running, you can access the Flask application by navigating to http://localhost:5000 in your web browser.
+        Once the container is running, you can access the Flask application by navigating to http://localhost:5000/predict in your web browser.
 
     Input Health Parameters:
         On the home page of the application, you'll find a form where you can input various health parameters such as'age', 'hypertension', 'heart_disease',etc.
