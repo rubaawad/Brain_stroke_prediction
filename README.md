@@ -52,11 +52,11 @@ Use metrics to assess the performance of the models and select the best one.
 # Models
     The project employs several machine learning models, including:
     Logistic Regression
-    K-Nearest Neighbors
     Gradient Boosting
     Support Vector Machine
     Decision Tree
     Random Forest
+    Voting classifier
 # Evaluation
     The performance of each model is evaluated using the following metrics:
     Accuracy
@@ -71,7 +71,7 @@ Use metrics to assess the performance of the models and select the best one.
     Navigate to the templates directory.
     Install Flask if not already installed: pip install Flask.
     Run the Flask application: python application.py.
-    Access the web application in your browser at http://localhost:5000.
+    Access the web application in your browser at http://localhost:5000/predict.
 # Docker
     Usage Instructions:
         Pull the Docker Image:

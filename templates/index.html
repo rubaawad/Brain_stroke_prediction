@@ -2,12 +2,12 @@
 <html>
    <head>
       <!-- Character set and viewport settings -->
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8"> <!-- Defines character encoding for the document -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the page is responsive and scales correctly on different devices -->
       <!-- Title of the HTML document -->
-      <title>Brain Stroke Prediction</title>
+      <title>Brain Stroke Prediction</title> <!-- The title displayed in the browser tab -->
       <!-- Link to external CSS file -->
-      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Connects to an external CSS file for styling -->
       <!-- Internal CSS styles -->
       <style>
          /* Body styles */
@@ -26,96 +26,98 @@
    </head>
    <body>
     <div class="container">
+        <!-- Display prediction result or form based on condition -->
         <span id="predictionResult" class='{{"hidden" if prediction else "visible"}}'>
-            <h1 style="color: white !important;">Brain Stroke Prediction Form</h1>
+            <h1 style="color: black !important;">Brain Stroke Prediction Form</h1> <!-- Header for prediction form -->
         </span>
         <span id="predictionResult" class='{{"visible" if prediction else "hidden"}}'>
-            <h1 style="color: white !important;">Brain Stroke  Result is </h1>
+            <h1 style="color: black !important;">Brain Stroke  Result is </h1> <!-- Header for displaying result -->
             {% if prediction %}
                 {% if prediction == "No" %}
-                    <p style="color: white !important;">The person is NOT likely to have Stroke </p> <!-- Unicode for smiling face -->
+                    <h1 style="color: green !important;">The person is NOT likely to have Stroke </h1> <!-- Result indicating no stroke -->
                 {% elif prediction == "Yes" %}
-                    <p style="color: red !important;">The person is likely to have Stroke </p> <!-- Unicode for sad face -->
+                    <h1 style="color: red !important;">The person is likely to have Stroke </h1> <!-- Result indicating stroke -->
                 {% endif %}
             {% endif %}
         </span>
+                <!-- Form for inputting data -->
                 <form action="/predict" method="POST">
                     <!-- Numerical features -->
                     <div class="input-container">
-                        <label for="age">Age:</label>
-                        <input type="text" id="age" name="age" value="{{ form_data.age }}" required><br><br>
+                        <label for="age">Age:</label> <!-- Label for age input -->
+                        <input type="text" id="age" name="age" value="{{ form_data.age }}" required><br><br> <!-- Input for age -->
                     </div>
                     <div class="input-container">
-                        <label for="avg_glucose_level">Glucose Level:</label>
-                        <input type="text" id="avg_glucose_level" name="avg_glucose_level" value="{{ form_data.avg_glucose_level }}" required><br><br>
+                        <label for="avg_glucose_level">Glucose Level:</label> <!-- Label for glucose level input -->
+                        <input type="text" id="avg_glucose_level" name="avg_glucose_level" value="{{ form_data.avg_glucose_level }}" required><br><br> <!-- Input for glucose level -->
                     </div>
                     <div class="input-container">
-                        <label for="bmi">BMI:</label>
-                        <input type="text" id="bmi" name="bmi" value="{{ form_data.bmi }}" required><br><br>
+                        <label for="bmi">BMI:</label> <!-- Label for BMI input -->
+                        <input type="text" id="bmi" name="bmi" value="{{ form_data.bmi }}" required><br><br> <!-- Input for BMI -->
                     </div>
                     <br></br>           
                                     
                     <!-- Categorical features -->
                     <div class="input-container">
-                        <label for="gender">Gender:</label>
+                        <label for="gender">Gender:</label> <!-- Label for gender dropdown -->
                         <select type="text" id="gender" name="gender">
-                            <option value="0" {% if form_data.gender == 0 %} selected {% endif %}>Male</option>
-                            <option value="1" {% if form_data.gender == 1 %} selected {% endif %}>Female</option>
+                            <option value="0" {% if form_data.gender == 0 %} selected {% endif %}>Male</option> <!-- Option for Male -->
+                            <option value="1" {% if form_data.gender == 1 %} selected {% endif %}>Female</option> <!-- Option for Female -->
                         </select><br><br>
                     </div>
         
                     <div class="input-container">
-                        <label for="ever_married">Married:</label>
+                        <label for="ever_married">Married:</label> <!-- Label for marital status dropdown -->
                         <select type="text" id="ever_married" name="ever_married">
-                            <option value="1" {% if form_data.ever_married == 1 %} selected {% endif %}>Yes</option>
-                            <option value="0" {% if form_data.ever_married == 0 %} selected {% endif %}>No</option>
+                            <option value="1" {% if form_data.ever_married == 1 %} selected {% endif %}>Yes</option> <!-- Option for Yes -->
+                            <option value="0" {% if form_data.ever_married == 0 %} selected {% endif %}>No</option> <!-- Option for No -->
                         </select><br><br>
                     </div>
                     <div class="input-container">
-                        <label for="heart_disease">Heart Disease:</label>
+                        <label for="heart_disease">Heart Disease:</label> <!-- Label for heart disease dropdown -->
                         <select type="text" id="heart_disease" name="heart_disease">
-                            <option value="1" {% if form_data.heart_disease == 1 %} selected {% endif %}>Yes</option>
-                            <option value="0" {% if form_data.heart_disease == 0 %} selected {% endif %}>No</option>
+                            <option value="1" {% if form_data.heart_disease == 1 %} selected {% endif %}>Yes</option> <!-- Option for Yes -->
+                            <option value="0" {% if form_data.heart_disease == 0 %} selected {% endif %}>No</option> <!-- Option for No -->
                         </select><br><br>
                     </div>
                     <div class="input-container">
-                        <label for="hypertension">Hypertension:</label>
+                        <label for="hypertension">Hypertension:</label> <!-- Label for hypertension dropdown -->
                         <select type="text" id="hypertension" name="hypertension">
-                            <option value="1" {% if form_data.hypertension == 1 %} selected {% endif %}>Yes</option>
-                            <option value="0" {% if form_data.hypertension == 0 %} selected {% endif %}>No</option>
+                            <option value="1" {% if form_data.hypertension == 1 %} selected {% endif %}>Yes</option> <!-- Option for Yes -->
+                            <option value="0" {% if form_data.hypertension == 0 %} selected {% endif %}>No</option> <!-- Option for No -->
                         </select><br><br>
                     </div>
                     <br></br>
                     <div class="input-container">
-                        <label for="work_type">Work Type:</label>
+                        <label for="work_type">Work Type:</label> <!-- Label for work type dropdown -->
                         <select type="text" id="work_type" name="work_type">
-                            <option value="0" {% if form_data.work_type == 0 %} selected {% endif %}>Private</option>
-                            <option value="1" {% if form_data.work_type == 1 %} selected {% endif %}>Self-employed</option>
-                            <option value="2" {% if form_data.work_type == 2 %} selected {% endif %}>Govt_job</option>
-                            <option value="3" {% if form_data.work_type == 3 %} selected {% endif %}>Children</option>
+                            <option value="0" {% if form_data.work_type == 0 %} selected {% endif %}>Private</option> <!-- Option for Private -->
+                            <option value="1" {% if form_data.work_type == 1 %} selected {% endif %}>Self-employed</option> <!-- Option for Self-employed -->
+                            <option value="2" {% if form_data.work_type == 2 %} selected {% endif %}>Govt_job</option> <!-- Option for Govt_job -->
+                            <option value="3" {% if form_data.work_type == 3 %} selected {% endif %}>Children</option> <!-- Option for Children -->
                         </select><br><br>
                     </div>
         
                     <div class="input-container">
-                        <label for="Residence_type">Residence Type:</label>
+                        <label for="Residence_type">Residence Type:</label> <!-- Label for residence type dropdown -->
                         <select type="text" id="Residence_type" name="Residence_type">
-                            <option value="1" {% if form_data.Residence_type == 1 %} selected {% endif %}>Urban</option>
-                            <option value="0" {% if form_data.Residence_type == 0 %} selected {% endif %}>Rural</option>
+                            <option value="1" {% if form_data.Residence_type == 1 %} selected {% endif %}>Urban</option> <!-- Option for Urban -->
+                            <option value="0" {% if form_data.Residence_type == 0 %} selected {% endif %}>Rural</option> <!-- Option for Rural -->
                         </select><br><br>
                     </div>
                     <div class="input-container">
-                        <label for="smoking_status">Smoking Status:</label>
+                        <label for="smoking_status">Smoking Status:</label> <!-- Label for smoking status dropdown -->
                         <select type="text" id="smoking_status" name="smoking_status">
-                            <option value="0" {% if form_data.smoking_status == 0 %} selected {% endif %}>Formerly Smoked</option>
-                            <option value="1" {% if form_data.smoking_status == 1 %} selected {% endif %}>Never Smoked</option>
-                            <option value="2" {% if form_data.smoking_status == 2 %} selected {% endif %}>Smokes</option>
-                            <option value="3" {% if form_data.smoking_status == 3 %} selected {% endif %}>Unknown</option>
+                            <option value="0" {% if form_data.smoking_status == 0 %} selected {% endif %}>Formerly Smoked</option> <!-- Option for Formerly Smoked -->
+                            <option value="1" {% if form_data.smoking_status == 1 %} selected {% endif %}>Never Smoked</option> <!-- Option for Never Smoked -->
+                            <option value="2" {% if form_data.smoking_status == 2 %} selected {% endif %}>Smokes</option> <!-- Option for Smokes -->
+                            <option value="3" {% if form_data.smoking_status == 3 %} selected {% endif %}>Unknown</option> <!-- Option for Unknown -->
                         </select><br><br>
                     </div>
         
-                    <input type="submit" value="Predict">
+                    <!-- Submit button -->
+                    <input type="submit" value="Predict"> <!-- Button to submit the form -->
                 </form>       
             </div>
         </body>
         </html>
-        
